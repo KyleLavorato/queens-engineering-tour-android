@@ -1,0 +1,17 @@
+body {
+    background-color: #d4f;
+    background: url(bg.png);
+    background-size:100%;
+    background-repeat: no-repeat;
+    height: 100vh;
+}
+
+#top {
+margin-top: 30vh;
+}
+div{
+	text-align: center;
+}
+h4{
+	font-size: 15px;
+}

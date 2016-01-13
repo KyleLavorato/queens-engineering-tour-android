@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+    <widget xmlns   = "http://www.w3.org/ns/widgets"
+        xmlns:gap   = "http://phonegap.com/ns/1.0"
+        id          = "com.phonegap.example"
+        versionCode = "10" 
+        version     = "1.0.0" >
+
+    <!-- versionCode is optional and Android only -->
+
+    <name>Queen's Eng Tour</name>
+
+    <description>
+ An app to help people tour Queen's Engineering. 
+    </description>
+
+    <author href="queensu.ca" email="support@queensu.ca">
+        Queen's Engineering 
+    </author>
+
+<preference name="orientation" value="portrait" />
+<preference name="fullscreen" value="true" />
+
+<icon src="icon.png" />
+<gap:splash src="splash.png" />
+</widget>

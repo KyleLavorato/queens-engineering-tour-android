@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Geolocation</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <style>
+      html, body, #map-canvas {
+        height: 100%;
+        margin: 0px;
+        padding: 0px
+      }
+    </style>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
+
+    <script>
+// Note: This example requires that you consent to location sharing when
+// prompted by your browser. If you see a blank space instead of the map, this
+// is probably because you have denied permission for location sharing.
+
+var map;
+
+function initialize() {
+
+var ellis = new google.maps.LatLng(44.226330, -76.496289);
+	var jeffery = new google.maps.LatLng(44.225895, -76.496123);
+	var ilc = new google.maps.LatLng(44.228142, -76.492691);
+	var goodwin = new google.maps.LatLng(44.227933, -76.492446);
+	var walterlight = new google.maps.LatLng(44.227916, -76.491821);
+	var dupius = new google.maps.LatLng(44.228521, -76.492696);
+	var miller = new google.maps.LatLng(44.227403, -76.492945);
+	var etherington = new google.maps.LatLng(44.224084, -76.493915);
+	var granthall = new google.maps.LatLng(44.225771, -76.495178);
+	var sterl = new google.maps.LatLng(44.224592, -76.497721);
+	
+	var contentellis = '<div id="content">'+
+      '<div id="siteNotice">'+
+      '</div>'+
+      '<h1 id="firstHeading" class="firstHeading">Ellis Hall</h1>'+
+      '<div id="bodyContent">'+
+      '</div>'+
+      '</div>';
+	  
+	  var contentjeffery = '<div id="content">'+
+      '<div id="siteNotice">'+
+      '</div>'+
+      '<h1 id="firstHeading" class="firstHeading">Jeffery Hall</h1>'+
+      '<div id="bodyContent">'+
+
+      '</div>'+
+      '</div>';
+	  
+	  var contentilc = '<div id="content">'+
+      '<div id="siteNotice">'+
+      '</div>'+
+      '<h1 id="firstHeading" class="firstHeading">Integrated Learning Centre</h1>'+
+      '<div id="bodyContent">'+
+      
+      '</div>'+
+      '</div>';
+	  
+	  var contentgoodwin = '<div id="content">'+
+      '<div id="siteNotice">'+
+      '</div>'+
+      '<h1 id="firstHeading" class="firstHeading">Goodwin Hall</h1>'+
+      '<div id="bodyContent">'+
+
+      '</div>'+
+      '</div>';
+	  
+	  var contentwalterlight = '<div id="content">'+
+      '<div id="siteNotice">'+
+      '</div>'+
+      '<h1 id="firstHeading" class="firstHeading">Walter Light Hall</h1>'+
+      '<div id="bodyContent">'+
+
+      '</div>'+
+      '</div>';
+	  
+	  var contentdupius = '<div id="content">'+
+      '<div id="siteNotice">'+
+      '</div>'+
+      '<h1 id="firstHeading" class="firstHeading">Dupius Hall</h1>'+
+      '<div id="bodyContent">'+
+
+      '</div>'+
+      '</div>';
+	  
+	  var contentmiller = '<div id="content">'+
+      '<div id="siteNotice">'+
+      '</div>'+
+      '<h1 id="firstHeading" class="firstHeading">Miller Hall</h1>'+
+      '<div id="bodyContent">'+
+
+      '</div>'+
+      '</div>';
+	  
+	  var contentetherington = '<div id="content">'+
+      '<div id="siteNotice">'+
+      '</div>'+
+      '<h1 id="firstHeading" class="firstHeading">Etherington Hall</h1>'+
+      '<div id="bodyContent">'+
+
+      '</div>'+
+      '</div>';
+	  
+	  var contentgranthall = '<div id="content">'+
+      '<div id="siteNotice">'+
+      '</div>'+
+      '<h1 id="firstHeading" class="firstHeading">Grant Hall</h1>'+
+      '<div id="bodyContent">'+
+
+      '</div>'+
+      '</div>';
+	  
+	  var contentsterl = '<div id="content">'+
+      '<div id="siteNotice">'+
+      '</div>'+
+      '<h1 id="firstHeading" class="firstHeading">Sterling Hall</h1>'+
+      '<div id="bodyContent">'+
+
+      '</div>'+
+      '</div>';
+	  
+	  var infoellis = new google.maps.InfoWindow({
+      content: contentellis
+  });
+  var infosterl = new google.maps.InfoWindow({
+      content: contentsterl
+  });
+  
+  var infojeffery = new google.maps.InfoWindow({
+      content: contentjeffery
+  });
+  var infoilc = new google.maps.InfoWindow({
+      content: contentilc
+  });
+  var infogoodwin = new google.maps.InfoWindow({
+      content: contentgoodwin
+  });
+  var infowalterlight = new google.maps.InfoWindow({
+      content: contentwalterlight
+  });
+  var infodupius = new google.maps.InfoWindow({
+      content: contentdupius
+  });
+  var infomiller = new google.maps.InfoWindow({
+      content: contentmiller
+  });
+  var infoetherington = new google.maps.InfoWindow({
+      content: contentetherington
+  });
+  var infogranthall = new google.maps.InfoWindow({
+      content: contentgranthall
+  });
+  
+  
+  var mapOptions = {
+    zoom: 16
+  };
+  map = new google.maps.Map(document.getElementById('map-canvas'),
+      mapOptions);
+
+  // Try HTML5 geolocation
+  if(navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      var pos = new google.maps.LatLng(position.coords.latitude,
+                                       position.coords.longitude);
+
+      var infowindow = new google.maps.InfoWindow({
+        map: map,
+        position: pos,
+        content: 'Your Location.'
+      });
+	  
+	  var ellism = new google.maps.Marker({
+      position: ellis,
+      map: map,
+	  icon: 'brown_MarkerC.png'
+  });
+  google.maps.event.addListener(ellism, 'click', function() {
+    infoellis.open(map,ellism);
+  });
+  var jefferym = new google.maps.Marker({
+      position: jeffery,
+      map: map,
+      icon: 'blue_MarkerM.png'
+  });
+  google.maps.event.addListener(jefferym, 'click', function() {
+    infojeffery.open(map,jefferym);
+  });
+  var ilcm = new google.maps.Marker({
+      position: ilc,
+      map: map,
+  });
+  google.maps.event.addListener(ilcm, 'click', function() {
+    infoilc.open(map,ilcm);
+  });
+  var goodwinm = new google.maps.Marker({
+      position: goodwin,
+      map: map,
+      icon: 'orange_MarkerG.png'
+  });
+  google.maps.event.addListener(goodwinm, 'click', function() {
+    infogoodwin.open(map,goodwinm);
+  });
+  var walterlightm = new google.maps.Marker({
+      position: walterlight,
+      map: map,
+      icon: 'red_MarkerE.png'
+  });
+    google.maps.event.addListener(walterlightm, 'click', function() {
+    infowalterlight.open(map,walterlightm);
+  });
+  var dupiusm = new google.maps.Marker({
+      position: dupius,
+      map: map,
+      icon: 'yellow_MarkerC.png'
+  });
+    google.maps.event.addListener(dupiusm, 'click', function() {
+    infodupius.open(map,dupiusm);
+  });
+  var millerm = new google.maps.Marker({
+      position: miller,
+      map: map,
+      icon: 'orange_MarkerM.png'
+  });
+    google.maps.event.addListener(millerm, 'click', function() {
+    infomiller.open(map,millerm);
+  });
+  var etheringtonm = new google.maps.Marker({
+      position: etherington,
+      map: map,
+      icon: 'purple_MarkerM.png'
+  });
+    google.maps.event.addListener(etheringtonm, 'click', function() {
+    infoetherington.open(map,etheringtonm);
+  });
+  var granthallm = new google.maps.Marker({
+      position: granthall,
+      map: map,
+  });
+    google.maps.event.addListener(granthallm, 'click', function() {
+    infogranthall.open(map,granthallm);
+  });
+  
+ var sterlm = new google.maps.Marker({
+      position: sterl,
+      map: map,
+	  icon: 'purple_MarkerP.png'
+  });
+    google.maps.event.addListener(sterlm, 'click', function() {
+    infosterl.open(map,sterlm);
+  });
+  
+  
+
+      map.setCenter(pos);
+    }, function() {
+      handleNoGeolocation(true);
+    });
+  } else {
+    // Browser doesn't support Geolocation
+    handleNoGeolocation(false);
+  }
+}
+
+function handleNoGeolocation(errorFlag) {
+  if (errorFlag) {
+    var content = 'Error: The Geolocation service failed.';
+  } else {
+    var content = 'Error: Your browser doesn\'t support geolocation.';
+  }
+
+  var options = {
+    map: map,
+    position: new google.maps.LatLng(60, 105),
+    content: content
+  };
+
+  var infowindow = new google.maps.InfoWindow(options);
+  map.setCenter(options.position);
+}
+
+
+
+google.maps.event.addDomListener(window, 'load', initialize);
+
+    </script>
+  </head>
+  <body>
+    <div id="map-canvas"></div>
+  </body>
+</html>
